@@ -28,7 +28,19 @@ RUN apk add --update --upgrade curl python unzip bash gcc g++ scons && \
     cp -R ${BENTO4_PATH}/Source/Python/utils ${BENTO4_PATH}/utils && \
     cp -a ${BENTO4_PATH}/Source/Python/wrappers/. ${BENTO4_PATH}/bin
 
+ENV USER=golang
+ENV UID=1000
+
+RUN adduser \
+--disabled-password \
+--gecos "" \
+--shell "/sbin/nologin" \
+--uid "${UID}" \
+${USER}
+
 WORKDIR /go/src
+
+USER ${USER}
 
 #vamos mudar para o endpoint correto. Usando top apenas para segurar o processo rodando
 ENTRYPOINT [ "top" ]
