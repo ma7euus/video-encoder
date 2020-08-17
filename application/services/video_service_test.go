@@ -11,6 +11,7 @@ import (
 	"time"
 	"github.com/joho/godotenv"
 	"log"
+	"os"
 )
 
 func init() {
@@ -27,7 +28,7 @@ func TestVideoServiceDownload(t *testing.T) {
 	videoService.Video = video
 	videoService.VideoRepository = repo
 
-	err := videoService.Download("video_encoder")
+	err := videoService.Download(os.Getenv("BUCKET_NAME"))
 	require.Nil(t, err)
 
 	err = videoService.Fragment()
