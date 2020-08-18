@@ -43,4 +43,5 @@ WORKDIR /go/src
 USER ${USER}
 
 #vamos mudar para o endpoint correto. Usando top apenas para segurar o processo rodando
-ENTRYPOINT [ "top" ]
+#ENTRYPOINT [ "top" ]
+CMD tail -f /dev/null

@@ -1,3 +1,4 @@
 .idea
 .env
+.docker/dbdata
 bucket-credential.json
