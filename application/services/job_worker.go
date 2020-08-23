@@ -75,7 +75,7 @@ func JobWorker(messageChannel chan amqp.Delivery, returnChan chan JobWorkerResul
 			continue
 		}
 
-		returnChan <- returnJobResult(job, message, err)
+		returnChan <- returnJobResult(job, message, nil)
 
 	}
 }
