@@ -21,6 +21,7 @@ services:
       - "5432:5432"
 
   rabbit:
+    container_name: "video-encoder-rabbitmq"
     image: "rabbitmq:3-management"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
@@ -30,3 +31,5 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+    volumes:
+      - ./.docker/rabbitmq/config/definitions.json:/etc/rabbitmq/definitions.json
